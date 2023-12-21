@@ -3,6 +3,7 @@ if [ ! -f .githooks/pre-commit ]; then
     mkdir -p .githooks
     curl -L https://raw.githubusercontent.com/dunv/convenience/main/go-commit-hook.sh -o .githooks/pre-commit
     chmod +x .githooks/pre-commit
+    sed -i '/^.githooks$/d' .gitignore
     echo .githooks >> .gitignore
 fi
 git config --local core.hooksPath $PWD/.githooks
