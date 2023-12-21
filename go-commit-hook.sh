@@ -37,7 +37,7 @@ fi
 
 # Run tests
 printf "${LIME_YELLOW}Running tests...${NORMAL}\n"
-go test -v ./... -failfast -p 1 -count 1
+CI=true go test -v ./... -failfast -p 1 -count 1
 if [[ $? != 0 ]]; then
   printf "${RED}Tests failed! ${NORMAL}Please fix errors before committing.\n"
   exit 1
