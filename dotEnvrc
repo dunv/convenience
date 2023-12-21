@@ -1,9 +1,11 @@
 PATH_add bin
 if [ ! -f .githooks/pre-commit ]; then
+    echo "Downloading hooks..."
     mkdir -p .githooks
-    curl -L https://raw.githubusercontent.com/dunv/convenience/main/go-commit-hook.sh -o .githooks/pre-commit
+    curl -s -L https://raw.githubusercontent.com/dunv/convenience/main/go-commit-hook.sh -o .githooks/pre-commit
     chmod +x .githooks/pre-commit
     sed -i '/^.githooks$/d' .gitignore
     echo .githooks >> .gitignore
+    echo "Downloading hooks done"
 fi
 git config --local core.hooksPath $PWD/.githooks
